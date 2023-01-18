@@ -18,7 +18,7 @@ public class Main {
     }
 
     // Begins the prime accounting process
-    public void count(long n)
+    public void countPrimes(long n)
     {
         long startTime = System.nanoTime();
 
@@ -95,7 +95,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Main assignment1 = new Main();
-        assignment1.count((long)Math.pow(10, 8));
+        assignment1.countPrimes((long)Math.pow(10, 8));
         assignment1.printResult();
     }
 }
