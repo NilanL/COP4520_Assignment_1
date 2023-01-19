@@ -7,10 +7,12 @@ How to run?
 4. Run command "java Main"
 5. Should should take between 7 to 22 seconds for N = 10^8 (Depends on processor)
 6. Find results in "primes.txt" that will be created in the repo directory
+7. To run test suite for primes of 10^1 to 10^8, run command "java Main test"
+8. Find results in "primes_test.txt" that will be created in the repo directory
 
 <b>Testing</b>
 </br>
-To verify the total number of primes, values from 10^1 to 10^8 were fed into the program and compared with the list of prime totals from Wolfram Mathworld: https://mathworld.wolfram.com/PrimeCountingFunction.html.</br>
+To verify the total number of primes, values from 10^1 to 10^8 were fed into the program through a test suite and compared with the list of prime totals from Wolfram Mathworld: https://mathworld.wolfram.com/PrimeCountingFunction.html.</br>
 The list of largest primes as well as prime sums were verified for values 10^1 and 10^2, which were hand checked and verified.
 Each value was also tested a minimum of 5 times to ensure that the values did not change among multiple runs. If they had changed, then that would mean the program had a mutual exclusion issue, with threads read/writing over each other causing the occasional result shifts.
 </br></br>
