@@ -68,7 +68,9 @@ public class PrimeCounterRunnable implements Runnable
                 {
                     primesTotal += j;
                     primesFound++;
-                    primesList.add(j);
+
+                    if (primesList.size() < 10)
+                        primesList.add(j);
                 }
             }
         } while (j >= 3);
