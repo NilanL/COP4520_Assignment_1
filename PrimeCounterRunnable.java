@@ -14,7 +14,7 @@ public class PrimeCounterRunnable implements Runnable
         counter = new Counter(n - 1);
         primesFound = 1;
         primesTotal = 2;
-        primesList = new ArrayList<Integer>();
+        primesList = new ArrayList<Integer>(n);
     }
 
     // Return list of primes
@@ -68,9 +68,7 @@ public class PrimeCounterRunnable implements Runnable
                 {
                     primesTotal += j;
                     primesFound++;
-
-                    if (primesList.size() < 10)
-                        primesList.add(j);
+                    primesList.add(j);
                 }
             }
         } while (j >= 3);
