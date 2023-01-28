@@ -2,23 +2,23 @@ import java.util.*;
 
 public class PrimeCounterRunnable implements Runnable
 {
-    static long N;
+    static int N;
     volatile Counter counter;
-    volatile long primesFound;
+    volatile int primesFound;
     volatile long primesTotal;
-    volatile List<Long> primesList;
+    volatile List<Integer> primesList;
 
-    PrimeCounterRunnable(long n)
+    PrimeCounterRunnable(int n)
     {
         N = n;
         counter = new Counter(n - 1);
         primesFound = 1;
         primesTotal = 2;
-        primesList = new ArrayList<Long>();
+        primesList = new ArrayList<Integer>();
     }
 
     // Return list of primes
-    public List<Long> getPrimesList()
+    public List<Integer> getPrimesList()
     {
         return primesList;
     }
@@ -30,18 +30,21 @@ public class PrimeCounterRunnable implements Runnable
     }
 
     // Returns total number of primes
-    public long getPrimesFound()
+    public int getPrimesFound()
     {
         return primesFound;
     }
 
     // Checks if 'n' is a prime integer in O(sqrt(n)) time
-    private boolean isPrime(long n)
+    private boolean isPrime(int n)
     {
-        if (n % 2 == 0)
+        if (n == 2)
+            return true;
+
+        if (n % 2 == 0 || n < 2)
             return false;
 
-        for (long i = 3; i <= Math.sqrt(n); i += 2)
+        for (int i = 3; i <= Math.sqrt(n); i += 2)
         {
             if (n % i == 0)
                 return false;
@@ -51,14 +54,14 @@ public class PrimeCounterRunnable implements Runnable
     }
 
     public void run () {
-        long j;
+        int j;
 
         do
         {
             j = counter.getAndDecrement();
 
             // Check if prime and is valid number
-            if (isPrime(j) && j >= 3)
+            if (j >= 3 && isPrime(j))
             {
                 // Thread safe prime accounting
                 synchronized (this)
