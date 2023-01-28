@@ -3,9 +3,9 @@ import java.io.*;
 
 public class Main {
     double execTime;
-    long primesFound;
+    int primesFound;
     long primesTotal;
-    List<Long> topTenList;
+    List<Integer> topTenList;
     Thread [] threads;
 
     Main()
@@ -13,12 +13,12 @@ public class Main {
         execTime = 0;
         primesFound = 0;
         primesTotal = 0;
-        topTenList = new ArrayList<Long>();
+        topTenList = new ArrayList<Integer>();
         threads = new Thread [8];
     }
 
     // Begins the prime accounting process
-    public void countPrimes(long n)
+    public void countPrimes(int n)
     {
         long startTime = System.nanoTime();
 
@@ -57,7 +57,7 @@ public class Main {
 
         // Get list of 10 largest primes
         var list = runnable.getPrimesList();
-        list.add((long)2);
+        list.add(2);
         Collections.sort(list);
 
         if (list.size() > 10)
@@ -145,14 +145,14 @@ public class Main {
             {
                 Main temp = new Main();
 
-                temp.countPrimes((long)Math.pow(10,i));
+                temp.countPrimes((int)Math.pow(10,i));
                 temp.printResultTest(writer, i);
             }
 
             double endSuiteTime = (System.nanoTime() - startSuiteTime) / 1000000.0;
 
-            System.out.println("Testing Suite Done in " + endSuiteTime + " milliseconds");
-            System.out.println("See primes_test.txt");
+            System.out.println("----> Testing Suite Done in " + endSuiteTime + " milliseconds");
+            System.out.println("----> See primes_test.txt");
 
             writer.close();
         }
@@ -170,7 +170,7 @@ public class Main {
 
         if (args == null || args.length == 0 || !args[0].equals("test"))
         {
-            assignment1.countPrimes((long)Math.pow(10,8));
+            assignment1.countPrimes((int)Math.pow(10,8));
             assignment1.printResult();
         }
         else
