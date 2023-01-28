@@ -87,6 +87,9 @@ public class Main {
             }
             writer.write("]");
 
+            System.out.println("----> Prime Counting for 10^8 Done in " + execTime + " milliseconds");
+            System.out.println("----> See primes.txt");
+
             writer.close();
         }
         catch (IOException e)
