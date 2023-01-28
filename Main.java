@@ -57,8 +57,17 @@ public class Main {
         primesTotal = runnable.getPrimesTotal();
 
         var list = runnable.getPrimesList();
+        list.add(2);
         Collections.sort(list);
-        primesList = list.subList(list.size() - 10, list.size());
+
+        if (list.size() >= 10)
+        {
+            primesList = list.subList(list.size() - 10, list.size());
+        }
+        else
+        {
+            primesList = list;
+        }
     }
 
     // Writes results into primes.txt
