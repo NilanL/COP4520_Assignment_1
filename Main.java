@@ -55,12 +55,10 @@ public class Main {
         // Get accounted values
         primesFound = runnable.getPrimesFound();
         primesTotal = runnable.getPrimesTotal();
-        primesList = runnable.getPrimesList();
 
-        if (primesList.size() < 10)
-            primesList.add(2);
-
-        Collections.sort(primesList);
+        var list = runnable.getPrimesList();
+        Collections.sort(list);
+        primesList = list.subList(list.size() - 10, list.size());
     }
 
     // Writes results into primes.txt
