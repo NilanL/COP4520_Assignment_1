@@ -5,7 +5,7 @@ public class Main {
     double execTime;
     int primesFound;
     long primesTotal;
-    List<Integer> topTenList;
+    List<Integer> primesList;
     Thread [] threads;
 
     Main()
@@ -13,7 +13,7 @@ public class Main {
         execTime = 0;
         primesFound = 0;
         primesTotal = 0;
-        topTenList = new ArrayList<Integer>();
+        primesList = new ArrayList<Integer>();
         threads = new Thread [8];
     }
 
@@ -52,22 +52,15 @@ public class Main {
 
         execTime = (System.nanoTime() - startTime) / 1000000.0;
 
+        // Get accounted values
         primesFound = runnable.getPrimesFound();
         primesTotal = runnable.getPrimesTotal();
+        primesList = runnable.getPrimesList();
 
-        // Get list of 10 largest primes
-        var list = runnable.getPrimesList();
-        list.add(2);
-        Collections.sort(list);
+        if (primesList.size() < 10)
+            primesList.add(2);
 
-        if (list.size() > 10)
-        {
-            topTenList = list.subList(list.size() - 10, list.size());
-        }
-        else
-        {
-            topTenList = list;
-        }
+        Collections.sort(primesList);
     }
 
     // Writes results into primes.txt
@@ -88,7 +81,7 @@ public class Main {
 
             writer.write(execTime + "ms " + primesFound + " " + primesTotal);
             writer.write(" [ ");
-            for (long prime : topTenList)
+            for (long prime : primesList)
             {
                 writer.write(prime + " ");
             }
@@ -109,7 +102,7 @@ public class Main {
             writer.write("10^" + exp + ": ");
             writer.write(execTime + "ms " + primesFound + " " + primesTotal);
             writer.write(" [ ");
-            for (long prime : topTenList)
+            for (long prime : primesList)
             {
                 writer.write(prime + " ");
             }
