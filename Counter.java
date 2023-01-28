@@ -1,28 +1,28 @@
 public class Counter {
-  private long value;
+  private int value;
 
-  Counter(long value)
+  Counter(int value)
   {
     this.value = value;
   }
 
   // Threads-safe counter value getting and incrementing
-  public long getAndIncrement()
+  public int getAndIncrement()
   {
     synchronized (this) 
     {
-      long temp = this.value;
+      int temp = this.value;
       this.value = temp + 2;
       return temp;
     }
   }
 
   // Threads-safe counter value getting and decrementing
-  public long getAndDecrement()
+  public int getAndDecrement()
   {
     synchronized (this) 
     {
-      long temp = this.value;
+      int temp = this.value;
       this.value = temp - 2;
       return temp;
     }
