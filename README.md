@@ -3,7 +3,7 @@
 ## Methodology
 
 The approach for isPrime() was similar to the approach found here: https://www.geeksforgeeks.org/prime-numbers/.
-The parallelization was based on the textbook's approach, as well the approach shown in the slides/class.
+The parallelization was based on the textbook/slides/class approach.
 </br></br>
 
 ## Testing
